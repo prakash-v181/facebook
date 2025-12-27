@@ -129,7 +129,7 @@ const LeftSideBar = () => {
             <LogOut /> <span className="ml-2 font-bold text-md">Logout</span>
           </Button>
             <p>Privacy · Terms · Advertising ·</p>
-            <p>· Meta © 2024</p>
+            <p>· Meta © 2025</p>
           </div>
         </div>
       </div>
