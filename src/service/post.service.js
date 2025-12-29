@@ -1,94 +1,91 @@
-import axiosInstance from "./url.service"
+import axiosInstance from "./url.service";
 
+// CREATE POST
+export const createPost = async (postData) => {
+  try {
+    const result = await axiosInstance.post("/posts/posts", postData);
+    return result?.data?.data;
+  } catch (error) {
+    console.error("Create Post Error:", error);
+    throw error;
+  }
+};
 
-//create method for posts
-export const createPost = async(postData) =>{
-    try {
-         const result = await  axiosInstance.post('/users/posts', postData)
-         return result?.data?.data;
-    } catch (error) {
-        console.error(error)
-        throw error;
-    }
-}
+// GET ALL POSTS
+export const getAllPosts = async () => {
+  try {
+    const result = await axiosInstance.get("/posts/posts");
+    return result?.data?.data;
+  } catch (error) {
+    console.error("Get All Posts Error:", error);
+    throw error;
+  }
+};
 
-//create method for story
-export const createStory = async(postData) =>{
-    try {
-         const result = await  axiosInstance.post('/users/story', postData)
-         return result?.data?.data;
-    } catch (error) {
-        console.error(error)
-        throw error;
-    }
-}
+// LIKE POST
+export const likePost = async (postId) => {
+  try {
+    const result = await axiosInstance.post(`/posts/posts/likes/${postId}`);
+    return result?.data?.data;
+  } catch (error) {
+    console.error("Like Post Error:", error);
+    throw error;
+  }
+};
 
-//get all post method 
-export const getAllPosts = async() =>{
-    try {
-         const result = await  axiosInstance.get('/users/posts')
-         return result?.data?.data;
-    } catch (error) {
-        console.error(error)
-        throw error;
-    }
-}
+// COMMENT ON POST
+export const commentsPost = async (postId, comment) => {
+  try {
+    const result = await axiosInstance.post(`/posts/posts/comments/${postId}`, comment);
+    return result?.data?.data;
+  } catch (error) {
+    console.error("Comment Error:", error);
+    throw error;
+  }
+};
 
-//get all story method 
-export const getAllStory = async() =>{
-    try {
-         const result = await  axiosInstance.get('/users/story')
-         return result?.data?.data;
-    } catch (error) {
-        console.error(error)
-        throw error;
-    }
-}
+// SHARE POST
+export const sharePost = async (postId) => {
+  try {
+    const result = await axiosInstance.post(`/posts/posts/share/${postId}`);
+    return result?.data?.data;
+  } catch (error) {
+    console.error("Share Post Error:", error);
+    throw error;
+  }
+};
 
+// GET ALL POSTS OF A USER
+export const getAllUserPosts = async (userId) => {
+  try {
+    const result = await axiosInstance.get(`/posts/posts/user/${userId}`);
+    return result?.data?.data;
+  } catch (error) {
+    console.error("Get User Posts Error:", error);
+    throw error;
+  }
+};
 
+// STORY ENDPOINTS
 
-//method for like a post
-export const likePost = async(postId) =>{
-    try {
-         const result = await  axiosInstance.post(`/users/posts/likes/${postId}`)
-         return result?.data?.data;
-    } catch (error) {
-        console.error(error)
-        throw error;
-    }
-}
+// CREATE STORY
+export const createStory = async (storyData) => {
+  try {
+    const result = await axiosInstance.post("/posts/story", storyData);
+    return result?.data?.data;
+  } catch (error) {
+    console.error("Create Story Error:", error);
+    throw error;
+  }
+};
 
-
-//method for comments a post
-export const commentsPost = async(postId,comment) =>{
-    try {
-         const result = await  axiosInstance.post(`/users/posts/comments/${postId}`,comment)
-         return result?.data?.data;
-    } catch (error) {
-        console.error(error)
-        throw error;
-    }
-}
-
-//method for share a post
-export const sharePost = async(postId) =>{
-    try {
-         const result = await  axiosInstance.post(`/users/posts/share/${postId}`)
-         return result?.data?.data;
-    } catch (error) {
-        console.error(error)
-        throw error;
-    }
-}
-
-
-//get all users posts 
-export const getAllUserPosts = async(userId)=>{
-    try {
-        const result = await axiosInstance.get(`/users/posts/user/${userId}`)
-        return result?.data?.data;
-    } catch (error) {
-        console.error(error)
-        throw error;
-    }
-}
+// GET ALL STORIES
+export const getAllStory = async () => {
+  try {
+    const result = await axiosInstance.get("/posts/story");
+    return result?.data?.data;
+  } catch (error) {
+    console.error("Get All Story Error:", error);
+    throw error;
+  }
+};
