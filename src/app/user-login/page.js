@@ -73,20 +73,35 @@ const Page = () => {
   });
 
 
-  const onSubmitRegister = async(data) =>{
-    try {
-       const result = await registerUser(data)
-        if(result.status === 'success'){
-          router.push('/')
-        }
-        toast.success('User register successfully')
-    } catch (error) {
-      console.error(error);
-      toast.error('email already exist')
-    }finally{
-      setIsLoading(false);
-    }
+  // REGISTER SUBMIT
+const onSubmitRegister = async (data) => {
+  setIsLoading(true);
+  const result = await registerUser(data);
+
+  if (result?.status === "success") {
+    toast.success("User registered successfully");
+    router.push("/");
+  } else {
+    toast.error(result?.message || "Email already exists");
   }
+
+  setIsLoading(false);
+};
+
+  // const onSubmitRegister = async(data) =>{
+  //   try {
+  //      const result = await registerUser(data)
+  //       if(result.status === 'success'){
+  //         router.push('/')
+  //       }
+  //       toast.success('User register successfully')
+  //   } catch (error) {
+  //     console.error(error);
+  //     toast.error('email already exist')
+  //   }finally{
+  //     setIsLoading(false);
+  //   }
+  // }
 
 
   //reset the form
@@ -96,20 +111,38 @@ const Page = () => {
   },[resetLoginForm,resetSignUpForm])
 
 
-  const onSubmitLogin = async(data) =>{
-    try {
-       const result = await loginUser(data)
-        if(result.status === 'success'){
-          router.push('/')
-        }
-        toast.success('User login successfully')
-    } catch (error) {
-      console.error(error);
-      toast.error('invalid email or password')
-    }finally{
-      setIsLoading(false);
-    }
+
+  // LOGIN SUBMIT
+const onSubmitLogin = async (data) => {
+  setIsLoading(true);
+  const result = await loginUser(data);
+
+  if (result?.status === "success") {
+    toast.success("User login successfully");
+    router.push("/");
+  } else {
+    toast.error(result?.message || "Invalid email or password");
   }
+
+  setIsLoading(false);
+};
+
+
+
+  // const onSubmitLogin = async(data) =>{
+  //   try {
+  //      const result = await loginUser(data)
+  //       if(result.status === 'success'){
+  //         router.push('/')
+  //       }
+  //       toast.success('User login successfully')
+  //   } catch (error) {
+  //     console.error(error);
+  //     toast.error('invalid email or password')
+  //   }finally{
+  //     setIsLoading(false);
+  //   }
+  // }
 
 
    const handleGoogleLogin = () => {
