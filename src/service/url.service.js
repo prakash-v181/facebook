@@ -4,6 +4,7 @@ const ApiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "https://backendfacebook-k
 
 const axiosInstance = axios.create({
   baseURL: ApiUrl,
+  withCredentials: true, // 👈 VERY IMPORTANT for auth cookies
 });
 
 export default axiosInstance;
